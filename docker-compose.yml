@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  valheim:
+    image: lloesche/valheim-server
+    container_name: valheim
+    restart: unless-stopped
+    environment:
+      - SERVER_NAME=CloudValheim_LH
+      - WORLD_NAME=alcoholwipes_server
+      - SERVER_PASS=Hogna77
+      - SERVER_PUBLIC=true
+      - TZ=America/Los_Angeles
+      - BEPINEX=false
+      - VALHEIM_PLUS=false
+      - SERVER_ARGS=-savedir /config/worlds_local
+    volumes:
+      - ./config:/config
+      - ./steam:/opt/steam
+    ports:
+      - "2456-2458:2456-2458/udp"
